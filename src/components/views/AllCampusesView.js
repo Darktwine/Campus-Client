@@ -42,7 +42,43 @@ const useStyles = makeStyles(theme => ({
 const AllCampusesView = (props) => {
   const classes = useStyles();
   if (!props.allCampuses.length) {
-    return <div>There are no campuses.</div>;
+    return <div>
+      <h1 class="centerheader">Campus Listing</h1>
+      <AppBar position="static" elevation={0} className={classes.appBar}>
+        <Toolbar>
+          {/* <Typography variant="h6" className={classes.title} color="inherit" >
+            CRUD App
+          </Typography> */}
+          <Typography className={classes.title}>
+            <Link className={classes.links} to={'/'} >
+              <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
+                Home
+              </Button>
+            </Link>
+          </Typography>
+
+          <Link className={classes.links} to={'/campuses'} >
+            <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
+              Campuses
+            </Button>
+          </Link>
+
+          <Link className={classes.links} to={'/students'} >
+            <Button variant="contained" color="primary">
+              Students
+            </Button>
+          </Link>
+        </Toolbar>
+      </AppBar>
+      <div class="centerheader">
+        <h1> There are no campuses registered in the database.</h1>
+        <Link className={classes.links} to={'/'} >
+            <Button variant="contained" color="primary">
+              Add Campus
+            </Button>
+        </Link>
+      </div>
+    </div>;
   }
 
   return (
@@ -74,13 +110,17 @@ const AllCampusesView = (props) => {
           </Link>
         </Toolbar>
       </AppBar>
-      <div>
-        <h1>All Campuses</h1>
-        <Link className={classes.links} to={'/students'} >
-            <Button variant="contained" color="primary">
-              Add Campus
-            </Button>
-        </Link>
+      <div className='row'>
+        <div className="columnleft">
+          <h1>All Campuses</h1>
+        </div>
+        <div className="columnright">
+          <Link className={classes.links} to={'/'} >
+              <Button variant="contained" color="primary">
+                Add Campus
+              </Button>
+          </Link>
+        </div>
       </div>
       {props.allCampuses.map((campus) => (
         <div key={campus.id}>
