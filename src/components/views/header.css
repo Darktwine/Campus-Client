@@ -8,6 +8,11 @@
     /* padding: 0 10px; */
     margin-left: 2.5%;
 }
+.columncampuses{
+    float: left;
+    margin-left: 2.5%;
+}
+
 .columnright{
     float: right;
     /* width: 45%; */
