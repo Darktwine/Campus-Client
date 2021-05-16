@@ -94,28 +94,28 @@ const AddStudentView = (props) => {
     e.preventDefault();
     var paragraph = document.getElementById("invalid");
     paragraph.innerHTML = '';
-    if (firstname.length == 0) {
+    if (firstname.length === 0) {
         var paragraph = document.getElementById("invalid");
         var text = document.createTextNode("Invalid first name");
         paragraph.appendChild(text);
         var linebreak = document.createElement("br");
         paragraph.appendChild(linebreak);
     }
-    if (lastname.length == 0) {
+    if (lastname.length === 0) {
         var paragraph = document.getElementById("invalid");
         var text = document.createTextNode("Invalid last name");
         paragraph.appendChild(text);
         var linebreak = document.createElement('br');
         paragraph.appendChild(linebreak);
     }
-    if (email.length == 0) {
+    if (email.length === 0) {
         var paragraph = document.getElementById("invalid");
         var text = document.createTextNode("Invalid email");
         paragraph.appendChild(text);
         var linebreak = document.createElement('br');
         paragraph.appendChild(linebreak);
     }
-    if (gpa == 0) {
+    if (gpa === 0) {
         var paragraph = document.getElementById("invalid");
         var text = document.createTextNode("Invalid GPA");
         paragraph.appendChild(text);
