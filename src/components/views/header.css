@@ -16,6 +16,7 @@
     padding: 0 10px;
     margin-left: 2.5%;
 }
+
 .columncampuses{
     float: left;
     /* margin-left: 1.5%; */
@@ -58,3 +59,16 @@
     display: table;
     clear: both;
   }
+
+.studentboxes{
+    float: left;
+    /* margin-left: 1.5%; */
+    margin: 1%;
+    /* margin-bottom: 2.5%; */
+    width: 20%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    /* background-color: #e0bbe4; */
+    background-color: white;
+}
