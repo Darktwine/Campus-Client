@@ -16,6 +16,9 @@
     padding: 0 10px;
     margin-left: 2.5%;
 }
+.addmarginleft{
+    margin-left:3%;
+}
 
 .columncampuses{
     float: left;
@@ -65,10 +68,34 @@
     /* margin-left: 1.5%; */
     margin: 1%;
     /* margin-bottom: 2.5%; */
-    width: 20%;
+    width: 27%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 16px;
     text-align: center;
     /* background-color: #e0bbe4; */
     background-color: white;
 }
+
+.buttondelete {
+    background-color: red; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  
+.buttonedit {
+    background-color: rgb(30, 214, 30); /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
