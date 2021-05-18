@@ -115,7 +115,7 @@ const AllCampusesView = (props) => {
           <h1>All Campuses</h1>
         </div>
         <div className="columnright">
-          <Link className={classes.links} to={'/'} >
+          <Link className={classes.links} to={'/addcampus'} >
               <Button variant="contained" color="primary">
                 Add Campus
               </Button>
