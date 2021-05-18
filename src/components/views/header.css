@@ -4,12 +4,12 @@
 .contentbottom{
     margin-top: 15%;
 }
-.column{
+/* .column{ */
     /* float: left; */
     /* width: 45%; */
     /* padding: 0 10px; */
     /* margin-left: 2.5%; */
-}
+/* } */
 .columnleft{
     float: left;
     /* width: 45%; */
@@ -99,3 +99,8 @@
     margin: 4px 2px;
     cursor: pointer;
   }
+
+.bgColor{
+    background-color:  #fcb6bb;
+    min-height: 100em;
+}
