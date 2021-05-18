@@ -129,6 +129,9 @@ const AllStudentsView = (props) => {
               <Link to={`/student/${student.id}`}>
                 <h1>{student.firstname} {student.lastname}</h1>
               </Link>
+              <Link to={`/campus/${student.campusId}`}>
+                <h2>{student.campus.name}</h2>
+              </Link>
               {/* <p>Campus Name</p> */}
               {/* <Link to={`/campus/${student.campus.id}`}>
                   <h1>{student.campus}</h1>
