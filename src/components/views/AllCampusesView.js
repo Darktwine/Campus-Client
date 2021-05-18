@@ -40,7 +40,15 @@ const useStyles = makeStyles(theme => ({
 
 
 const AllCampusesView = (props) => {
+  console.log(props);
   const classes = useStyles();
+  let campuses = props.allCampuses;
+  console.log(campuses);
+  // var studentarr = campuses;
+  // for(let i = 0; i<campuses.length;i++){
+  //   studentarr[i] = campuses[i].id;
+  // }
+  // console.log("THIS IS THE CAMPUSESSS: " , studentarr);
   if (!props.allCampuses.length) {
     return <div>
       <h1 class="centerheader">Campus Listing</h1>
@@ -124,6 +132,7 @@ const AllCampusesView = (props) => {
       </div>
       <div>
         {props.allCampuses.map((campus) => (
+          // console.log(campus.students);
           <div className="columncampuses" key={campus.id}>
             <div className="columnleft">
           <img src="https://static.vecteezy.com/system/resources/thumbnails/000/363/064/small/5_-_1_-_School.jpg" alt=""></img>
@@ -132,15 +141,16 @@ const AllCampusesView = (props) => {
               <Link to={`/campus/${campus.id}`}>
                 <h1>{campus.name}</h1>
               </Link>
-              <h3>3 students</h3>
+              {/* <h3>3 students</h3> */}
+              <h3>{campus.students.length} students</h3>
               <p>{campus.description}</p>
               <div className="contentbottom">
-                <div className="contentleft">
+                <div className="contentleft buttonedit">
                 <Link className={classes.links} to={'/'} >
                   <p>edit</p>
                 </Link>
                 </div>
-                <div className="contentright">
+                <div className="contentright buttondelete">
                   <p>delete</p>
                 </div>
               </div>
