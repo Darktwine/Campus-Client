@@ -38,7 +38,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const AllStudentsView = (props) => {
-  console.log(props);
   const classes = useStyles();
   if (!props.allStudents.length) {
     return <div>
