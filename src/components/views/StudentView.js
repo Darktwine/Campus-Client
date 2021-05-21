@@ -75,7 +75,7 @@ const StudentView = (props) => {
         </AppBar>
       
         <h1>{student.firstname} {student.lastname}</h1>
-        <Link to={`/campus/${student.campus.id}`}>
+        <Link to={`/campus/${student.campusId}`}>
           <h2>{student.campus.name}</h2>
         </Link>
         <h4>GPA: {student.gpa}</h4>
