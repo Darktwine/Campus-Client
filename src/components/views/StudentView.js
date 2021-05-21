@@ -38,7 +38,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const StudentView = (props) => {
-    const {student} = props;
+    let {student} = props;
+    console.log(student);
+    
 
     const classes = useStyles();
     //waiting for students array to be populated
@@ -76,7 +78,7 @@ const StudentView = (props) => {
       
         <h1>{student.firstname} {student.lastname}</h1>
         <Link to={`/campus/${student.campusId}`}>
-          <h2>{student.campus.name}</h2>
+          <h2>{student.campus?.name}</h2>
         </Link>
         <h4>GPA: {student.gpa}</h4>
         <h4>Email: {student.email}</h4>
