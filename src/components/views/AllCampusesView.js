@@ -7,6 +7,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import { editCampusThunk } from "../../store/thunks";
+import { deleteCampusThunk } from "../../store/thunks";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -146,12 +148,14 @@ const AllCampusesView = (props) => {
               <p>{campus.description}</p>
               <div className="contentbottom">
                 <div className="contentleft buttonedit">
-                <Link className={classes.links} to={'/'} >
-                  <p>edit</p>
+                <Link className={classes.links} to={'/editcampus'} >
+                  <Button variant="contained" color="primary" onClick={editCampusThunk(campus)}>
+                    Edit Campus
+                  </Button>
                 </Link>
                 </div>
                 <div className="contentright buttondelete">
-                  <p>delete</p>
+                  <Button onClick={deleteCampusThunk(campus.id)}>delete</Button>
                 </div>
               </div>
             </div>
