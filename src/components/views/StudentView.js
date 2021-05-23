@@ -166,6 +166,33 @@ const StudentView = (props) => {
               </div>
             </div>
           </div>
+          <h1>This student is registered to a campus</h1>
+              <div className="columncampuses" key={student.campusId}>
+                <div className="columnleft">
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/000/363/064/small/5_-_1_-_School.jpg" alt=""></img>
+                  </div>
+                  {student.campus?.name ?
+                  // <h2>This student is not registered to a campus.</h2>
+                  // :
+                  <div>
+                    <Link to={`/campus/${student.campusId}`}>
+                      <h1>{student.campus?.name}</h1>
+                    </Link>
+                    {/* <h3>3 students</h3> */}
+                    {/* <h3>{students.campus.students.length} students</h3> */}
+                    <p>{student.campus?.description}</p>
+                    <div className="contentbottom">
+                      <div className="contentleft buttonedit">
+                      <Link className={classes.links} to={'/'} >
+                        <p>edit</p>
+                      </Link>
+                      </div>
+                    </div>
+                  </div>
+                  :
+                  <h2>This student is not registered to a campus.</h2>
+                  }
+            </div>
           <div className={classes.text}>
           <label for="students">Select a campus:</label>
           <div>
