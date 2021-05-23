@@ -148,8 +148,8 @@ const AllCampusesView = (props) => {
               <p>{campus.description}</p>
               <div className="contentbottom">
                 <div className="contentleft buttonedit">
-                <Link className={classes.links} to={'/editcampus'} >
-                  <Button variant="contained" color="primary" onClick={editCampusThunk(campus)}>
+                <Link className={classes.links} to={`/editcampus/${campus.id}`} >
+                  <Button variant="contained" color="primary">
                     Edit Campus
                   </Button>
                 </Link>
