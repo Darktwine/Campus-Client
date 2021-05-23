@@ -116,7 +116,7 @@ const EditCampusView = (props) => {
         </Grid>
       </form>
 
-      </div>
+ 
       <div className={classes.text} id="invalid"> </div>
       <h2 className={classes.subheading}>Students on Campus</h2>
       <div className={classes.text}>

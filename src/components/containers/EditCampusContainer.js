@@ -56,6 +56,7 @@ class EditCampusContainer extends Component {
         return (
         <EditCampusView
             allCampuses={this.props.allCampuses}
+            allStudents={this.props.allStudents}
             handleSubmit={this.handleSubmit}
             setCampusName={this.setCampusName}
             setCampusAddress={this.setCampusAddress}
@@ -78,6 +79,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
     return {
         fetchAllCampuses: () => dispatch(fetchAllCampusesThunk()),
+        fetchAllStudents: () => dispatch(fetchAllStudentsThunk()),
         editCampusThunk: (campus) => dispatch(editCampusThunk(campus)),
     };
 };
@@ -85,6 +87,7 @@ const mapDispatch = (dispatch) => {
 // Type check props;
 EditCampusContainer.propTypes = {
     allCampuses: PropTypes.array.isRequired,
+    allStudents: PropTypes.array.isRequired,
     fetchAllCampuses: PropTypes.func.isRequired,
     allStudents: PropTypes.array.isRequired,
     fetchAllStudents: PropTypes.func.isRequired,
