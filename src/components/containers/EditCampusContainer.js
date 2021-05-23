@@ -1,7 +1,7 @@
 import { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { fetchAllCampusesThunk } from "../../store/thunks";
+import { fetchAllCampusesThunk, editCampusThunk } from "../../store/thunks";
 import { EditCampusView } from "../views";
 
 class EditCampusContainer extends Component {

@@ -1,10 +1,52 @@
 import { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { fetchAllCampusesThunk } from "../../store/thunks";
+import { fetchAllCampusesThunk, addCampusThunk } from "../../store/thunks";
 import { AddCampusView } from "../views";
 
 class AddCampusContainer extends Component {
+    constructor() {
+        super();
+        this.state = {
+            campusName: "",
+            campusAddress: "",
+            campusImageURL: "",
+            campusDescription: "",
+        };
+    }
+
+    handleSubmit = async (e) => {
+        e.preventDefault();
+        const campus = {
+            name: this.state.campusName,
+            address: this.state.campusAddress,
+            imageUrl: this.state.campusImageURL,
+            description: this.state.campusDescription,
+        };
+
+        let url = window.location.href;
+        url = url.substring(0, url.lastIndexOf("/"));
+        let newCampus = await this.props.addCampusThunk(campus);
+        // window.location.href = url + "/campus/" + newCampus.id;
+        window.location.href = url + "/campuses";
+    };
+
+    setCampusName = (newCampusName) => {
+        this.setState({ campusName: newCampusName });
+    };
+
+    setCampusAddress = (newCampusAddress) => {
+        this.setState({ campusAddress: newCampusAddress });
+    };
+
+    setCampusDescription = (newCampusDescription) => {
+        this.setState({ campusDescription: newCampusDescription });
+    };
+
+    setCampusImageUrl = (newCampusImageUrl) => {
+        this.setState({ campusImageURL: newCampusImageUrl });
+    };
+
     componentDidMount() {
         console.log(this.props);
         this.props.fetchAllCampuses();
@@ -14,6 +56,11 @@ class AddCampusContainer extends Component {
         return (
         <AddCampusView
             allCampuses={this.props.allCampuses}
+            handleSubmit={this.handleSubmit}
+            setCampusName={this.setCampusName}
+            setCampusAddress={this.setCampusAddress}
+            setCampusDescription={this.setCampusDescription}
+            setCampusImageUrl={this.setCampusImageUrl}
         />
         );
     }
@@ -30,6 +77,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
     return {
         fetchAllCampuses: () => dispatch(fetchAllCampusesThunk()),
+        addCampusThunk: (campus) => dispatch(addCampusThunk(campus)),
     };
 };
 
