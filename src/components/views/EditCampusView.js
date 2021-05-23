@@ -115,6 +115,21 @@ const EditCampusView = (props) => {
           </Button>
         </Grid>
       </form>
+
+      </div>
+      <div className={classes.text} id="invalid"> </div>
+      <h2 className={classes.subheading}>Students on Campus</h2>
+      <div className={classes.text}>
+        <label for="students">Select a student:</label>
+        <div>
+          <select name="students" id="students">
+          {props.allStudents.map((student) => (
+            <option value={student.firstname}>{student.firstname} {student.lastname} </option>
+          ))}
+          </select>
+        </div>
+        <Button style={{marginLeft: 10}} variant="contained" color="primary">Add to Campus</Button>
+      </div>
     </div>
   );
 };
