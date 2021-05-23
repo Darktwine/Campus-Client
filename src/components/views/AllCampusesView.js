@@ -37,55 +37,49 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-
-
 const AllCampusesView = (props) => {
   console.log(props);
   const classes = useStyles();
   let campuses = props.allCampuses;
   console.log(campuses);
-  // var studentarr = campuses;
-  // for(let i = 0; i<campuses.length;i++){
-  //   studentarr[i] = campuses[i].id;
-  // }
-  // console.log("THIS IS THE CAMPUSESSS: " , studentarr);
   if (!props.allCampuses.length) {
-    return <div>
-      <h1 class="centerheader">Campus Listing</h1>
-      <AppBar position="static" elevation={0} className={classes.appBar}>
-        <Toolbar>
-          {/* <Typography variant="h6" className={classes.title} color="inherit" >
-            CRUD App
-          </Typography> */}
-          <Typography className={classes.title}>
-            <Link className={classes.links} to={'/'} >
+    return 
+      <div>
+        <h1 class="centerheader">Campus Listing</h1>
+        <AppBar position="static" elevation={0} className={classes.appBar}>
+          <Toolbar>
+            {/* <Typography variant="h6" className={classes.title} color="inherit" >
+              CRUD App
+            </Typography> */}
+            <Typography className={classes.title}>
+              <Link className={classes.links} to={'/'} >
+                <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
+                  Home
+                </Button>
+              </Link>
+            </Typography>
+
+            <Link className={classes.links} to={'/campuses'} >
               <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
-                Home
+                Campuses
               </Button>
             </Link>
-          </Typography>
 
-          <Link className={classes.links} to={'/campuses'} >
-            <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
-              Campuses
-            </Button>
+            <Link className={classes.links} to={'/students'} >
+              <Button variant="contained" color="primary">
+                Students
+              </Button>
+            </Link>
+          </Toolbar>
+        </AppBar>
+        <div class="centerheader">
+          <h1> There are no campuses registered in the database.</h1>
+          <Link className={classes.links} to={'/'} >
+              <Button variant="contained" color="primary">
+                Add Campus
+              </Button>
           </Link>
-
-          <Link className={classes.links} to={'/students'} >
-            <Button variant="contained" color="primary">
-              Students
-            </Button>
-          </Link>
-        </Toolbar>
-      </AppBar>
-      <div class="centerheader">
-        <h1> There are no campuses registered in the database.</h1>
-        <Link className={classes.links} to={'/'} >
-            <Button variant="contained" color="primary">
-              Add Campus
-            </Button>
-        </Link>
-      </div>
+        </div>
     </div>;
   }
 
