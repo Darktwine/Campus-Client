@@ -7,6 +7,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
@@ -53,94 +55,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const AddCampusView = (props) => {
-  const [name, setName] = useState('');
-  const [location, setLocation] = useState('');
-  const [image, setimage] = useState('');
-  const [description, setdescription] = useState('');
   const classes = useStyles();
-  if (!props.allCampuses.length) {
-    return <div>
-      <h1 class="centerheader">Student Listing</h1>
-      <AppBar position="static" elevation={0} className={classes.appBar}>
-        <Toolbar>
-          {/* <Typography variant="h6" className={classes.title} color="inherit" >
-            CRUD App
-          </Typography> */}
-          <Typography className={classes.title}>
-            <Link className={classes.links} to={'/'} >
-              <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
-                Home
-              </Button>
-            </Link>
-          </Typography>
-
-          <Link className={classes.links} to={'/campuses'} >
-            <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
-              Campuses
-            </Button>
-          </Link>
-
-          <Link className={classes.links} to={'/students'} >
-            <Button variant="contained" color="primary">
-              Students
-            </Button>
-          </Link>
-        </Toolbar>
-      </AppBar>
-    </div>;
-  }
-
-  function submitcampus(e) {
-    e.preventDefault();
-    var paragraph = document.getElementById("invalid");
-    paragraph.innerHTML = '';
-    if (name.length === 0) {
-        var paragraph = document.getElementById("invalid");
-        var text = document.createTextNode("Invalid campus name");
-        paragraph.appendChild(text);
-        var linebreak = document.createElement("br");
-        paragraph.appendChild(linebreak);
-    }
-    if (location.length === 0) {
-        var paragraph = document.getElementById("invalid");
-        var text = document.createTextNode("Invalid location");
-        paragraph.appendChild(text);
-        var linebreak = document.createElement('br');
-        paragraph.appendChild(linebreak);
-    }
-    if (image.length === 0) {
-        var paragraph = document.getElementById("invalid");
-        var text = document.createTextNode("Invalid image");
-        paragraph.appendChild(text);
-        var linebreak = document.createElement('br');
-        paragraph.appendChild(linebreak);
-    }
-    if (description.length === 0) {
-        var paragraph = document.getElementById("invalid");
-        var text = document.createTextNode("Invalid description");
-        paragraph.appendChild(text);
-    }
-    
-  }
-
-  function handleChangeName(campusname) {
-    let name = campusname.target.value;
-    setName({ name });
-  }
-  function handleChangeLocation(locationname) {
-    let location = locationname.target.value;
-    setLocation({ location });
-  }
-  function handleChangeImage(img) {
-    setimage({ email: img.target.value });
-  }
-  function handleChangeDescription(descrip) {
-    setdescription({ description: descrip.target.value });
-  }
 
   return (
     <div>
-      <h1 class="centerheader">Student Listing</h1>
+      <h1 class="centerheader">New Campus Form</h1>
       <AppBar position="static" elevation={0} className={classes.appBar}>
         <Toolbar>
           {/* <Typography variant="h6" className={classes.title} color="inherit" >
@@ -167,38 +86,45 @@ const AddCampusView = (props) => {
           </Link>
         </Toolbar>
       </AppBar>
-      <div className={classes.label}>
-      <form>
-        <label>
-            Campus Name:
-            <input type="text" name="name" onChange={ handleChangeName }/>
-        </label>
-        <br />
-        <label>
-            Campus Location:
-            <input type="text" name="location" onChange={ handleChangeLocation }/>
-        </label>
-        <br />
-        <label>
-            Campus Image URL:
-            <input type="text" name="image" onChange={ handleChangeImage }/>
-        </label>
-        <br />
-        <label>
-            Campus Description:
-            <input type="text" name="description" onChange={ handleChangeDescription }/>
-        </label>
-        <br />
-        <Button variant="contained" color="primary" onClick={submitcampus}>Add Campus</Button>
+
+      <Grid container justify="center">
+        <h1>Add a New Campus</h1>
+      </Grid>
+  
+      <form className={classes.root} noValidate autoComplete="off" onSubmit={props.handleSubmit}>
+
+        <Grid container justify="center">
+          <TextField id="standard-basic" label="Campus Name" onInput={ e => props.setCampusName(e.target.value)}/>
+        </Grid>
+
+        <Grid container justify="center">
+          <TextField id="standard-basic" label="Campus Address" onInput={ e => props.setCampusAddress(e.target.value)}/>
+        </Grid>
+
+        <Grid container justify="center">
+          <TextField id="standard-basic" label="Campus Description" onInput={ e => props.setCampusDescription(e.target.value)}/>
+        </Grid>
+
+        <Grid container justify="center">
+          <TextField id="standard-basic" label="Campus Image URL" onInput={ e => props.setCampusImageUrl(e.target.value)}/>
+        </Grid>
+
+        <Grid container justify="center">
+          <Button type="submit" variant="contained" color="primary">
+            Submit
+          </Button>
+        </Grid>
       </form>
-      </div>
-      <div className={classes.text} id="invalid"> </div>
     </div>
   );
 };
 
 AddCampusView.propTypes = {
-    allStudents: PropTypes.array.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    setCampusName: PropTypes.func.isRequired,
+    setCampusAddress: PropTypes.func.isRequired,
+    setCampusDescription: PropTypes.func.isRequired,
+    setCampusImageUrl: PropTypes.func.isRequired,
 };
 
 export default AddCampusView;
