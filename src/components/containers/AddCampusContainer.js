@@ -24,11 +24,11 @@ class AddCampusContainer extends Component {
             description: this.state.campusDescription,
         };
 
-        let url = window.location.href;
-        url = url.substring(0, url.lastIndexOf("/"));
-        let newCampus = await this.props.addCampusThunk(campus);
+        // let url = window.location.href;
+        // url = url.substring(0, url.lastIndexOf("/"));
+        // let newCampus = await this.props.addCampusThunk(campus);
         // window.location.href = url + "/campus/" + newCampus.id;
-        window.location.href = url + "/campuses";
+        window.location.href = "http://localhost:3000/";
     };
 
     setCampusName = (newCampusName) => {

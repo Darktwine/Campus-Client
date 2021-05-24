@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { useParams } from "react-router";
 import './header.css';
 
 import AppBar from '@material-ui/core/AppBar';
@@ -56,7 +57,13 @@ const useStyles = makeStyles(theme => ({
 
 const EditCampusView = (props) => {
   const classes = useStyles();
+  let { id } = useParams();
 
+  useEffect(() => {
+    props.setCampusId(id);
+  }, [])
+
+  
   return (
     <div>
       <h1 class="centerheader">Edit Campus Form</h1>

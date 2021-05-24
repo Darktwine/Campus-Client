@@ -8,6 +8,7 @@ class EditCampusContainer extends Component {
     constructor() {
         super();
         this.state = {
+            campusId: 0,
             campusName: "",
             campusAddress: "",
             campusImageURL: "",
@@ -18,6 +19,7 @@ class EditCampusContainer extends Component {
     handleSubmit = async (e) => {
         e.preventDefault();
         const campus = {
+            id: this.state.campusId,
             name: this.state.campusName,
             address: this.state.campusAddress,
             imageUrl: this.state.campusImageURL,
@@ -28,7 +30,17 @@ class EditCampusContainer extends Component {
         // url = url.substring(0, url.lastIndexOf("/"));
         // let newCampus = await this.props.editCampusThunk(campus);
         // window.location.href = url + "/campus/" + newCampus.id;
-        window.location.href = "http://localhost:3000/campuses";
+        // window.location.href = "http://localhost:3000/campuses";
+
+        let url = window.location.href;
+        url = url.substring(0, url.lastIndexOf("/"));
+        url = url.substring(0, url.lastIndexOf("/"));
+        await this.props.editCampusThunk(campus);
+        window.location.href = url + "/campuses";
+    };
+
+    setCampusId = (campusIdToEdit) => {
+        this.setState({ campusId: campusIdToEdit });
     };
 
     setCampusName = (newCampusName) => {
@@ -58,6 +70,7 @@ class EditCampusContainer extends Component {
             allCampuses={this.props.allCampuses}
             allStudents={this.props.allStudents}
             handleSubmit={this.handleSubmit}
+            setCampusId={this.setCampusId}
             setCampusName={this.setCampusName}
             setCampusAddress={this.setCampusAddress}
             setCampusDescription={this.setCampusDescription}
@@ -89,7 +102,6 @@ EditCampusContainer.propTypes = {
     allCampuses: PropTypes.array.isRequired,
     allStudents: PropTypes.array.isRequired,
     fetchAllCampuses: PropTypes.func.isRequired,
-    allStudents: PropTypes.array.isRequired,
     fetchAllStudents: PropTypes.func.isRequired,
 };
 
