@@ -7,6 +7,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import { deleteStudentThunk } from "../../store/thunks";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -162,7 +163,7 @@ const StudentView = (props) => {
                 <p>edit</p>
               </Link>
               </div>
-              <div className="buttondelete">
+              <div className="buttondelete" onClick={deleteStudentThunk(student.id)}>
                 <p>delete</p>
               </div>
             </div>
