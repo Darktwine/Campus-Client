@@ -1,19 +1,58 @@
 import { Component } from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { fetchAllStudentsThunk } from "../../store/thunks";
+import { addStudentThunk } from "../../store/thunks";
 import { AddStudentView } from "../views";
 
 class AddStudentContainer extends Component {
-    componentDidMount() {
-      console.log(this.props);
-      this.props.fetchAllStudents();
-    }
-  
+  constructor() {
+    super();
+    this.state = {
+        firstName: "",
+        lastName: "",
+        email: "",
+        gpa: 0,
+    };
+  }
+
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    const student = {
+      firstname: this.state.firstName,
+      lastname: this.state.lastName,
+      email: this.state.email,
+      gpa: this.state.gpa,
+    };
+
+    let url = window.location.href;
+    url = url.substring(0, url.lastIndexOf("/"));
+    await this.props.addStudentThunk(student);
+    window.location.href = url + "/students";
+  }
+
+  setFirstName = (newFirstName) => {
+      this.setState({ firstName: newFirstName });
+  };
+
+  setLastName = (newLastName) => {
+    this.setState({ lastName: newLastName });
+  };
+
+  setEmail = (newEmail) => {
+      this.setState({ email: newEmail })
+  };
+
+  setGPA = (newGPA) => {
+      this.setState({ gpa: newGPA })
+  };
+
     render() {
       return (
         <AddStudentView
-          allStudents={this.props.allStudents}
+          handleSubmit={this.handleSubmit}
+          setFirstName={this.setFirstName}
+          setLastName={this.setLastName}
+          setEmail={this.setEmail}
+          setGPA={this.setGPA}
         />
       );
     }
@@ -29,14 +68,13 @@ class AddStudentContainer extends Component {
   // Map dispatch to props;
   const mapDispatch = (dispatch) => {
     return {
-      fetchAllStudents: () => dispatch(fetchAllStudentsThunk()),
+      addStudentThunk: (student) => dispatch(addStudentThunk(student)),
     };
   };
   
   // Type check props;
   AddStudentContainer.propTypes = {
-    allStudents: PropTypes.array.isRequired,
-    fetchAllStudents: PropTypes.func.isRequired,
+
   };
   
   // Export our store-connected container by default;
