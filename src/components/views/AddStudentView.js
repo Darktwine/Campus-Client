@@ -1,12 +1,14 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import React, { useState } from 'react';
+import React from 'react';
 import './header.css';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
@@ -52,95 +54,12 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-const AddStudentView = (props) => {
-  const [firstname, setFirst] = useState('');
-  const [lastname, setLast] = useState('');
-  const [email, setemail] = useState('');
-  const [gpa, setgpa] = useState(0);
+const EditCampusView = (props) => {
   const classes = useStyles();
-  if (!props.allStudents.length) {
-    return <div>
-      <h1 class="centerheader">Student Listing</h1>
-      <AppBar position="static" elevation={0} className={classes.appBar}>
-        <Toolbar>
-          {/* <Typography variant="h6" className={classes.title} color="inherit" >
-            CRUD App
-          </Typography> */}
-          <Typography className={classes.title}>
-            <Link className={classes.links} to={'/'} >
-              <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
-                Home
-              </Button>
-            </Link>
-          </Typography>
-
-          <Link className={classes.links} to={'/campuses'} >
-            <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
-              Campuses
-            </Button>
-          </Link>
-
-          <Link className={classes.links} to={'/students'} >
-            <Button variant="contained" color="primary">
-              Students
-            </Button>
-          </Link>
-        </Toolbar>
-      </AppBar>
-    </div>;
-  }
-
-  function submitstudent(e) {
-    e.preventDefault();
-    var paragraph = document.getElementById("invalid");
-    paragraph.innerHTML = '';
-    if (firstname.length === 0) {
-        var paragraph = document.getElementById("invalid");
-        var text = document.createTextNode("Invalid first name");
-        paragraph.appendChild(text);
-        var linebreak = document.createElement("br");
-        paragraph.appendChild(linebreak);
-    }
-    if (lastname.length === 0) {
-        var paragraph = document.getElementById("invalid");
-        var text = document.createTextNode("Invalid last name");
-        paragraph.appendChild(text);
-        var linebreak = document.createElement('br');
-        paragraph.appendChild(linebreak);
-    }
-    if (email.length === 0) {
-        var paragraph = document.getElementById("invalid");
-        var text = document.createTextNode("Invalid email");
-        paragraph.appendChild(text);
-        var linebreak = document.createElement('br');
-        paragraph.appendChild(linebreak);
-    }
-    if (gpa === 0) {
-        var paragraph = document.getElementById("invalid");
-        var text = document.createTextNode("Invalid GPA");
-        paragraph.appendChild(text);
-    }
-    
-  }
-
-  function handleChangeFirstName(name) {
-    let fname = name.target.value;
-    setFirst({ fname });
-  }
-  function handleChangeLastName(name) {
-    let lname = name.target.value;
-    setLast({ lname });
-  }
-  function handleChangeEmail(name) {
-    setemail({ email: name.target.value });
-  }
-  function handleChangeGPA(name) {
-    setgpa({ gpa: name.target.value });
-  }
-
+  
   return (
     <div>
-      <h1 class="centerheader">Student Listing</h1>
+      <h1 class="centerheader">New student form</h1>
       <AppBar position="static" elevation={0} className={classes.appBar}>
         <Toolbar>
           {/* <Typography variant="h6" className={classes.title} color="inherit" >
@@ -167,38 +86,46 @@ const AddStudentView = (props) => {
           </Link>
         </Toolbar>
       </AppBar>
-      <div className={classes.label}>
-      <form>
-        <label>
-            Student First Name:
-            <input type="text" name="firstname" onChange={ handleChangeFirstName }/>
-        </label>
-        <br />
-        <label>
-            Student Last Name:
-            <input type="text" name="lastname" onChange={ handleChangeLastName }/>
-        </label>
-        <br />
-        <label>
-            Student Email:
-            <input type="text" name="email" onChange={ handleChangeEmail }/>
-        </label>
-        <br />
-        <label>
-            GPA:
-            <input type="number" name="gpa" onChange={ handleChangeGPA }/>
-        </label>
-        <br />
-        <Button variant="contained" color="primary" onClick={submitstudent}>Add Student</Button>
+
+      <Grid container justify="center">
+        <h1>Add a new student</h1>
+      </Grid>
+  
+      <form className={classes.root} noValidate autoComplete="off" onSubmit={props.handleSubmit}>
+
+        <Grid container justify="center">
+          <TextField id="standard-basic" label="Student First Name" onInput={ e => props.setFirstName(e.target.value)}/>
+        </Grid>
+
+        <Grid container justify="center">
+          <TextField id="standard-basic" label="Student Last Name" onInput={ e => props.setLastName(e.target.value)}/>
+        </Grid>
+
+        <Grid container justify="center">
+          <TextField id="standard-basic" label="Student Email" onInput={ e => props.setEmail(e.target.value)}/>
+        </Grid>
+
+        <Grid container justify="center">
+          <TextField id="standard-basic" label="Student GPA" onInput={ e => props.setGPA(e.target.value)}/>
+        </Grid>
+
+        <Grid container justify="center">
+          <Button type="submit" variant="contained" color="primary">
+            Submit
+          </Button>
+        </Grid>
       </form>
-      </div>
-      <div className={classes.text} id="invalid"> </div>
+
     </div>
   );
 };
 
-AddStudentView.propTypes = {
-    allStudents: PropTypes.array.isRequired,
+EditCampusView.propTypes = {
+    handleSubmit: PropTypes.func.isRequired,
+    setFirstName: PropTypes.func.isRequired,
+    setLastName: PropTypes.func.isRequired,
+    setEmail: PropTypes.func.isRequired,
+    setGPA: PropTypes.func.isRequired,
 };
 
-export default AddStudentView;
+export default EditCampusView;
