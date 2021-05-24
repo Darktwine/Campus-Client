@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchStudentThunk, fetchAllCampusesThunk  } from "../../store/thunks";
+import { fetchStudentThunk, fetchAllCampusesThunk, fetchCampusThunk  } from "../../store/thunks";
 
 import { StudentView } from "../views";
 
@@ -15,6 +15,7 @@ class StudentContainer extends Component {
     return (
       <StudentView 
         student={this.props.student}
+        campus={this.props.campus}
         allCampuses={this.props.allCampuses}
       />
     );

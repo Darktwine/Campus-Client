@@ -47,6 +47,7 @@ const useStyles = makeStyles(theme => ({
 const StudentView = (props) => {
     console.log(props);
     const {student} = props;
+    const {allCampuses} = props;
     const classes = useStyles();
     //waiting for students array to be populated
     // if (campus.students === undefined){
@@ -157,7 +158,7 @@ const StudentView = (props) => {
 
             <div >
               <div className="columnleft buttonedit">
-              <Link className={classes.links} to={'/editstudent/:id'} >
+              <Link className={classes.links} to={`/editstudent/${student.id}`} >
                 <p>edit</p>
               </Link>
               </div>
@@ -183,7 +184,7 @@ const StudentView = (props) => {
                     <p>{student.campus?.description}</p>
                     <div className="contentbottom">
                       <div className="contentleft buttonedit">
-                      <Link className={classes.links} to={'/editstudent/:id'} >
+                      <Link className={classes.links} to={`/editcampus/${student.campusId}`} >
                         <p>edit</p>
                       </Link>
                       </div>
