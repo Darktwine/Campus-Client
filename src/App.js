@@ -1,32 +1,59 @@
 import "./App.css";
+import React from 'react';
 
 //Router
-import { Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 //Components
 import {
   HomePageContainer,
   CampusContainer,
   StudentContainer,
   AllCampusesContainer,
-  AllStudentsContainer
+  AllStudentsContainer,
+  AddStudentContainer,
+  AddCampusContainer,
+  EditCampusContainer,
+  EditStudentContainer
 } from './components/containers';
 
 // if you create separate components for adding/editing 
 // a student or campus, make sure you add routes to those
 // components here
 
-const App = () => {
+class App extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {apiResponse: ""};
+  }
+
+ callAPI(){
+  fetch("/students")
+  .then (res => this.setState ({apiResponse: res}));
+}
+
+componentWillMount(){
+  this.callAPI();
+}
+
+render(){
   return (
     <div className="App">
-      <Switch>
-        <Route exact path="/" component={HomePageContainer} />
-        <Route exact path="/campuses" component={AllCampusesContainer} />
-        <Route exact path="/campus/:id" component={CampusContainer} />
-        <Route exact path="/students" component={AllStudentsContainer} />
-        <Route exact path="/student/:id" component={StudentContainer} />
-      </Switch>        
+      <Router>
+        <Switch>
+          <Route exact path="/" component={HomePageContainer} />
+          <Route exact path="/campuses" component={AllCampusesContainer} />
+          <Route exact path="/campus/:id" component={CampusContainer} />
+          <Route exact path="/students" component={AllStudentsContainer} />
+          <Route exact path="/student/:id" component={StudentContainer} />
+          <Route exact path="/addstudent" component={AddStudentContainer} />
+          <Route exact path="/addcampus" component={AddCampusContainer} />
+          <Route path="/editcampus/:id" component={EditCampusContainer} />
+          <Route path="/editstudent/:id" component={EditStudentContainer} />
+        </Switch> 
+      </Router>       
     </div>
   );
+}
 }
 
 export default App;
