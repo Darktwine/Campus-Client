@@ -31,6 +31,13 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
     fontSize: '28px',
   },
+  subheading: {
+    marginTop: '50px',
+    display: 'flex',
+    justifyContent: 'center',
+    textAlign: 'center',
+    fontSize: '30px',
+  },
   text: {
     marginTop: '20px',
     display: 'flex',
@@ -59,11 +66,13 @@ const EditStudentView = (props) => {
   const classes = useStyles();
   let { id } = useParams();
 
-
+  useEffect(() => {
+    props.setStudentId(id);
+  }, [])
   
   return (
     <div>
-      <h1 class="centerheader">Edit Campus Form</h1>
+      <h1 class="centerheader">Edit Student Form</h1>
       <AppBar position="static" elevation={0} className={classes.appBar}>
         <Toolbar>
           {/* <Typography variant="h6" className={classes.title} color="inherit" >

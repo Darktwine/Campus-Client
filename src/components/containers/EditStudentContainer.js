@@ -8,6 +8,7 @@ class EditStudentContainer extends Component {
     constructor() {
         super();
         this.state = {
+            studentId: 0,
             studentGPA: 0,
             studentFirstName: "",
             studentLastName: "",
@@ -19,6 +20,7 @@ class EditStudentContainer extends Component {
     handleSubmit = async (e) => {
         e.preventDefault();
         const student = {
+            id: this.state.studentId,
             gpa: this.state.studentGPA,
             firstname: this.state.studentFirstName,
             lastname: this.state.campusAddress,
@@ -37,6 +39,10 @@ class EditStudentContainer extends Component {
         url = url.substring(0, url.lastIndexOf("/"));
         await this.props.editStudentThunk(student);
         window.location.href = url + "/students";
+    };
+
+    setStudentId = (value) => {
+        this.setState({ studentId: value });
     };
 
     setstudentGPA = (value) => {
@@ -70,6 +76,7 @@ class EditStudentContainer extends Component {
             allCampuses={this.props.allCampuses}
             allStudents={this.props.allStudents}
             handleSubmit={this.handleSubmit}
+            setStudentId={this.setStudentId}
             setstudentGPA={this.setstudentGPA}
             setstudentFirstName={this.setstudentFirstName}
             setstudentLastName={this.setstudentLastName}
