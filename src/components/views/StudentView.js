@@ -157,7 +157,7 @@ const StudentView = (props) => {
 
             <div >
               <div className="columnleft buttonedit">
-              <Link className={classes.links} to={'/'} >
+              <Link className={classes.links} to={'/editstudent/:id'} >
                 <p>edit</p>
               </Link>
               </div>
@@ -183,7 +183,7 @@ const StudentView = (props) => {
                     <p>{student.campus?.description}</p>
                     <div className="contentbottom">
                       <div className="contentleft buttonedit">
-                      <Link className={classes.links} to={'/'} >
+                      <Link className={classes.links} to={'/editstudent/:id'} >
                         <p>edit</p>
                       </Link>
                       </div>
